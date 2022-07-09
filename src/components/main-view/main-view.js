@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
-import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
+import { BrowserRouter as Router, Route, Navigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 //imports from React-Bootstrap
@@ -118,7 +118,7 @@ class MainView extends React.Component {
               return <MoviesList movies={movies} />;
             }} />
             <Route path="/register" render={() => {
-              if (Username) return <Redirect to="/" />
+              if (Username) return <Navigate to="/" />
               return <Col>
                 <RegistrationView />
               </Col>
