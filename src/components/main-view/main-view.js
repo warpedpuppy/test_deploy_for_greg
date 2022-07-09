@@ -1,6 +1,7 @@
 import React from 'react';
 import logo from '../../logo.svg';
 import axios from 'axios';
+import { connect } from 'react-redux';
 import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 import { Link } from "react-router-dom";
 
