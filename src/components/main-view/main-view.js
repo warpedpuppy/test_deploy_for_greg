@@ -24,6 +24,10 @@ import { ProfileView } from '../profile-view/profile-view';
 import { UpdateView } from '../update-view/update-view';
 import MoviesList from '../movies-list/movies-list';
 
+//import of actions for react-redux
+import { setMovies, setUser } from '../../actions/actions';
+
+
 import './main-view.css';
 
 class MainView extends React.Component {
