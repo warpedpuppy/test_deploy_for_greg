@@ -9,6 +9,9 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 
+//import of config
+import config from '../../config';
+
 //imports of React components & functions
 import { LoginView } from '../login-view/login-view';
 //import { MovieCard } from '../movie-card/movie-card';
@@ -28,10 +31,10 @@ class MainView extends React.Component {
     super();
     //initial state for all of these parameters set to null; but with Redux, we don't even do that!
     //this.state = {
-      //movies: [],
-      //selectedMovie: null,
-      // user: null,
-      //registered: null
+    //movies: [],
+    //selectedMovie: null,
+    // user: null,
+    //registered: null
     //}
   }
 
@@ -62,20 +65,20 @@ class MainView extends React.Component {
 
   getMovies(token) {
     axios.get(`${config.API_URL}/movies`, {
-      headers: { Authorization: `Bearer ${token}`}
+      headers: { Authorization: `Bearer ${token}` }
     })
-    .then(response => {
-      // Assign the result to the state
-      this.props.setMovies(response.data);
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
+      .then(response => {
+        // Assign the result to the state
+        this.props.setMovies(response.data);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   }
 
   getUser(token) {
     axios.get(`${config.API_URL}/users/${localStorage.getItem('user')}`, {
-      headers: { Authorization: `Bearer ${token}`}
+      headers: { Authorization: `Bearer ${token}` }
     }).then(response => {
       let user = response.data.Username;
       this.props.setUser(response.data);
@@ -108,7 +111,7 @@ class MainView extends React.Component {
                 <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
               </Col>
               if (movies.length === 0) return <div className="main-view" />;
-              return <MoviesList movies={movies}/>;
+              return <MoviesList movies={movies} />;
             }} />
             <Route path="/register" render={() => {
               if (Username) return <Redirect to="/" />
@@ -175,4 +178,4 @@ let mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, { setMovies, setUser } )(MainView);
+export default connect(mapStateToProps, { setMovies, setUser })(MainView);
