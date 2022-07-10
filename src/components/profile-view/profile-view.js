@@ -8,7 +8,7 @@ import { Card } from 'react-bootstrap';
 
 import { Link } from "react-router-dom";
 
-import './profile-view.scss';
+//import './profile-view.scss';
 
 import axios from 'axios';
 
@@ -29,11 +29,11 @@ export class ProfileView extends React.Component {
     this.getUser(accessToken);
   }
 
-  
+
   getUser(token) {
     axios.get(`${config.API_URL}/users/` + localStorage.getItem('user'), {
-        headers: { Authorization: `Bearer ${token}` },
-      })
+      headers: { Authorization: `Bearer ${token}` },
+    })
       .then((response) => {
         this.setState({
           Username: response.data.Username,
@@ -43,7 +43,7 @@ export class ProfileView extends React.Component {
           FavoriteMovies: response.data.FavoriteMovies
         }
         );
-    });
+      });
   }
 
   handleRemoveFave(movie) {
@@ -67,15 +67,15 @@ export class ProfileView extends React.Component {
       axios.delete(`${config.API_URL}/users/${user}`,
         { headers: { Authorization: `Bearer ${token}` } }
       )
-      .then(() => {
-        alert(user + " has been deleted.");
-        localStorage.removeItem("user");
-        localStorage.removeItem("token");
-        window.location.pathname = "/";
-      })
-      .catch(function (error) {
-        console.log(error);
-      })
+        .then(() => {
+          alert(user + " has been deleted.");
+          localStorage.removeItem("user");
+          localStorage.removeItem("token");
+          window.location.pathname = "/";
+        })
+        .catch(function (error) {
+          console.log(error);
+        })
 
     } else {
       console.log("Thanks for staying with us! You rock!");
@@ -96,7 +96,7 @@ export class ProfileView extends React.Component {
 
     return (
       <>
-        <Row  className="text-white">
+        <Row className="text-white">
           <Col>
             <h1>Username: {Username}</h1>
             <p>Email: {`${this.state.Email}`}</p>
@@ -105,7 +105,7 @@ export class ProfileView extends React.Component {
           </Col>
         </Row>
         <Row>
-        {favoritesList.map((movie) => {
+          {favoritesList.map((movie) => {
             return (
               <Col md={4} key={movie._id}>
                 <div key={movie._id}>
@@ -117,7 +117,7 @@ export class ProfileView extends React.Component {
                       <Link to={`/movies/${movie._id}`}>
                         <Button variant="link">Open</Button>
                       </Link>
-                      <Button onClick={() => this.handleRemoveFave(movie)}>Remove from Favorites</Button> 
+                      <Button onClick={() => this.handleRemoveFave(movie)}>Remove from Favorites</Button>
                     </Card.Body>
                   </Card>
                 </div>

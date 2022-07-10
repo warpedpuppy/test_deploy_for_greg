@@ -3,15 +3,27 @@ import ReactDOM from 'react-dom/client';
 import Container from 'react-bootstrap/Container';
 import './index.css';
 import MainView from './components/main-view/main-view';
+
+//imports for react redux
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
+import moviesApp from './reducers/reducers';
+import { devToolsEnhancer } from 'redux-devtools-extension';
+
+
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
+const store = createStore(moviesApp, devToolsEnhancer());
+
 root.render(
   <React.StrictMode>
-    <Container>
-      <MainView />
-    </Container>
+    <Provider store={store}>
+      <Container>
+        <MainView />
+      </Container>
+    </Provider>
   </React.StrictMode>
 );
 

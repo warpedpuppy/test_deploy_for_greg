@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
-import { BrowserRouter as Router, Route, Navigate } from "react-router-dom";
+import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 //imports from React-Bootstrap
@@ -14,7 +14,7 @@ import config from '../../config';
 
 //imports of React components & functions
 import { LoginView } from '../login-view/login-view';
-//import { MovieCard } from '../movie-card/movie-card';
+import { MovieCard } from '../movie-card/movie-card';
 import { MovieView } from '../movie-view/movie-view';
 import { DirectorView } from '../director-view/director-view';
 import { GenreView } from '../genre-view/genre-view';
@@ -118,7 +118,7 @@ class MainView extends React.Component {
               return <MoviesList movies={movies} />;
             }} />
             <Route path="/register" render={() => {
-              if (Username) return <Navigate to="/" />
+              if (Username) return <Redirect to="/" />
               return <Col>
                 <RegistrationView />
               </Col>
@@ -173,6 +173,7 @@ class MainView extends React.Component {
       </>
     );
   }
+
 }
 
 let mapStateToProps = state => {

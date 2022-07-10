@@ -4,11 +4,11 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 
-import './genre-view.scss';
+//import './genre-view.scss';
 import { Card } from 'react-bootstrap';
 
 export class GenreView extends React.Component {
-    
+
   render() {
 
     const { genre, onBackClick } = this.props;
