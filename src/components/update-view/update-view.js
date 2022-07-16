@@ -7,7 +7,7 @@ import Button from 'react-bootstrap/Button';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
-//import './update-view.scss';
+import './update-view.scss';
 
 export function UpdateView(props) {
   const [username, setUsername] = useState('');
