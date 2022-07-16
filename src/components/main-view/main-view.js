@@ -27,7 +27,7 @@ import MoviesList from '../movies-list/movies-list';
 import { setMovies, setUser } from '../../actions/actions';
 
 
-import './main-view.css';
+import './main-view.scss';
 
 class MainView extends React.Component {
 
