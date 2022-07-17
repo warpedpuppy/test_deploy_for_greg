@@ -33,7 +33,7 @@ class MainView extends React.Component {
 
   constructor() {
     super();
-    //initial state for all of these parameters set to null; but with Redux, we don't even do that!
+    //initial state for all of these parameters set to null; but with Redux, we don't even do that!!!
     //this.state = {
     //movies: [],
     //selectedMovie: null,
